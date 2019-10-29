@@ -1,0 +1,11 @@
+TELAS:
+[x] login
+[x] autenticar_participante 
+[x] tela_principal
+[x] criar_teste
+[x] criar_pergunta
+[x] teste
+[x] banco_imagens
+[x] cadastrar_pesquisador
+[x] pergunta_ordinal
+[x] pergunta_continua

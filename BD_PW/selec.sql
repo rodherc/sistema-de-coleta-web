@@ -1,0 +1,2 @@
+SELECT emailParticipante
+FROM Participante
