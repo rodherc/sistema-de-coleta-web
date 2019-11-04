@@ -20,7 +20,6 @@ CREATE TABLE Teste (
 	codTeste int not null auto_increment,
     descricao varchar(500),
     codPesquisador int not null,
-	nome varchar(50) NOT NULL,
     
     constraint pḱ_cod_teste primary key(codTeste)
 );
