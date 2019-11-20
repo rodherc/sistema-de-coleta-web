@@ -205,11 +205,11 @@ public class TesteService {
                 ps.executeUpdate();
             } else {
                 System.out.println("-----------Criar novo teste-----------");
-                ps = con.prepareStatement("Insert into Teste (id,nome,descricao,chave) values (?,?,?,?)");
-                ps.setInt(1, teste.getId());
-                ps.setString(2, teste.getNome());
-                ps.setString(3, teste.getDescricao());
-                ps.setString(4, teste.getChave());
+                ps = con.prepareStatement("Insert into Teste (nome,descricao,chave) values (?,?,?)");
+                //ps.setInt(1, teste.getId());
+                ps.setString(1, teste.getNome());
+                ps.setString(2, teste.getDescricao());
+                ps.setString(3, teste.getChave());
                 //ps.setInt(3, usuario.getTipo().getValue());
                 
               //  senha = ServiceFactory.getLoginService().gerarSenha();

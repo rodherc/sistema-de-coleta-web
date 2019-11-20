@@ -29,5 +29,4 @@ VALUES(1,'ufla','imagens/ufla.jpeg');
 INSERT INTO Imagem
 VALUES(2,'ufla2','imagens/ufla2.jpeg');
 INSERT INTO Imagem
-VALUES(3,'ufla3','imagens/ufla3.jpeg')
-
+VALUES(3,'ufla3','imagens/ufla3.jpeg');
