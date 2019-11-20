@@ -1,4 +1,4 @@
-/dist
-/build
-/nbproject/private
+Example/dist
+Example/build
+Example/nbproject/private
 .DS_Store
