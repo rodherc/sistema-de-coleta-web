@@ -52,11 +52,11 @@ CREATE TABLE Pesquisador(
 );
 
 CREATE TABLE Pergunta(
-	codPergunta int, -- not null,
+	codPergunta int auto_increment not null,
     tipo int(20),-- not null,
     descricaoPergunta varchar(500) not null,
     codTeste int, -- not null ,
-    existeDescricao bool, -- not null,
+    existeDescricao boolean, -- not null,
     
 	constraint pḱ_cod_pergunta primary key(codPergunta, codTeste)
 );

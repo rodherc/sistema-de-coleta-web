@@ -23,6 +23,11 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" action="cadastroPergunta.do" method="POST">
                         
+                        <label class="control-label col-sm-2" for="existeDescricao">Inserir descricao:</label>
+                        <div class="col-sm-10">
+                            <input type="checkbox" name="existeDescricao" checked value="true">
+                        </div><br><br>
+                        
                         <label class="control-label col-sm-2" for="descricaoPergunta">Descricao:</label>
                         <div class="col-sm-10">
                             <textarea rows="4" cols="50" name="descricaoPergunta" placeholder="Digite a descricao"></textarea>
@@ -32,8 +37,8 @@
                         -->
                         <label class="control-label col-sm-2" for="tipo">Tipo:</label>
                         <div class="col-sm-10">
-                            <input type="radio" name="tipo" value="Ordinal">Ordinal<br>
-                            <input type="radio" name="tipo" value="Continuo">Continuo<br>
+                            <input type="radio" name="tipo" value="0">Ordinal<br>
+                            <input type="radio" name="tipo" value="1">Continuo<br>
                         </div>
                         <!--
                             só ativar o campo "quantidade de alternativas" se a opção "ordinal for escolhida

@@ -19,14 +19,14 @@ VALUES (1, 1, 'A,B,C,D');
 INSERT INTO Respostas
 VALUES (2, 1, 'D,D,D,D');
 
-INSERT INTO Pergunta
-VALUES (1,0,'qual a cor dos cabelos castanhos de maria?', 1, true);
-INSERT INTO Pergunta
-VALUES (2,1,'o peito do pe do pedro e preto?', 1, false);
-
 INSERT INTO Imagem
 VALUES(1,'ufla','imagens/ufla.jpeg');
 INSERT INTO Imagem
 VALUES(2,'ufla2','imagens/ufla2.jpeg');
 INSERT INTO Imagem
 VALUES(3,'ufla3','imagens/ufla3.jpeg');
+
+INSERT INTO Pergunta
+VALUES (1,0,'qual a cor dos cabelos castanhos de maria?', 1, true);
+INSERT INTO Pergunta
+VALUES (2,1,'o peito do pe do pedro e preto?', 1, false);

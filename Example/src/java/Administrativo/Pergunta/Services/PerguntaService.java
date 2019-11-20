@@ -198,20 +198,25 @@ public class PerguntaService {
             
             if (pergunta.getCodPergunta() != 0) {
                 System.out.println("----------Atualizar Pergunta-----------");
-                ps = con.prepareStatement("Update Pergunta set tipo = ?, descricaoPergunta = ?, existeDescricao = ? where codPergunta = ?");
+                //ps = con.prepareStatement("Update Pergunta set tipo = ?, descricaoPergunta = ?, existeDescricao = ? where codPergunta = ?");
+                ps = con.prepareStatement("Update Pergunta set descricaoPergunta = ? where codPergunta = ?");
                 //ps.setInt(1, teste.getId());
-                ps.setString(1, pergunta.getTipo().toString());
-                ps.setString(2, pergunta.getDescricaoPergunta());
+                //ps.setString(1, pergunta.getTipo().toString());
+                ps.setString(1, pergunta.getDescricaoPergunta());
                // ps.setInt(3, teste.getTipo().getValue());
-                ps.setBoolean(3, pergunta.getExisteDescricao());
+                //ps.setBoolean(3, pergunta.getExisteDescricao());
                 ps.executeUpdate();
             } else {
                 System.out.println("----------Criar nova Pergunta-----------");
-                ps = con.prepareStatement("Insert into Pergunta (tipo,descricaoPergunta,codTeste,existeDescricao) values (?,?)");
-                ps.setString(1, pergunta.getTipo().toString());
-                ps.setString(2, pergunta.getDescricaoPergunta());
-                ps.setInt(3,pergunta.getCodTeste());
-                ps.setBoolean(4, pergunta.getExisteDescricao());
+                //ps = con.prepareStatement("Insert into Pergunta (tipo,descricaoPergunta,codTeste,existeDescricao) values (?,?,?,?)");
+                 ps = con.prepareStatement("Insert into Pergunta (descricaoPergunta,codTeste,existeDescricao,tipo) values (?,?,?,?)");
+                //ps.setString(1, pergunta.getTipo().toString());
+                ps.setString(1, pergunta.getDescricaoPergunta());
+                ps.setInt(2,1);
+                ps.setBoolean(3,pergunta.getExisteDescricao());
+                ps.setInt(4, pergunta.getTipo().getValue());
+                //ps.setInt(3,pergunta.getCodTeste());
+                //ps.setBoolean(4, pergunta.getExisteDescricao());
                 
               //  senha = ServiceFactory.getLoginService().gerarSenha();
               //  String md5 = ServiceFactory.getLoginService().gerarMD5(senha);

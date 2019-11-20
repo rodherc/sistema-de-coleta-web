@@ -1,3 +1,3 @@
 
 Select *
-from Teste
+from Pergunta
