@@ -9,6 +9,7 @@ import Administrativo.Login.Controller.LoginController;
 import Administrativo.Login.Elementos.Componente;
 import Administrativo.Login.Elementos.Permissoes;
 import Administrativo.Teste.Entity.Teste;
+import Administrativo.Usuario.Entity.Usuario;
 import Administrativo.Teste.Services.TesteService;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -42,12 +43,18 @@ public class CadastroTesteController extends HttpServlet {
                     teste.setNome(request.getParameter("nome"));
                     teste.setDescricao(request.getParameter("descricao"));
                     teste.setChave(teste.criarChave());
-
+                    //Usuario usuario = (Usuario)request.getAttribute("usuario");
+                    //Integer id =(Integer)request.getSession().getAttribute("usuario.id");
+                    //Integer id = usuario.getId();
+                    //System.out.println("-------------id usuario------------");
+                    //System.out.println(id);
+                    //teste.setId(id);
+                        
 
                     TesteService service = new TesteService();
                     try{
                         service.gravarTeste(teste);
-                        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                        System.out.println("---------Gravou Teste-------------");
                     }catch(Exception ex){
                         request.setAttribute("erro", ex);
                         Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,7 +65,7 @@ public class CadastroTesteController extends HttpServlet {
                       dispatcher.forward(request, response);
                 }
             else{
-                System.out.println("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+                System.out.println("-----------Teste invalido-----------");
                 request.setAttribute("erro", new Exception("Teste Inválido"));
                 RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
                 dispatcher.forward(request, response);

@@ -6,10 +6,10 @@ ALTER TABLE Respostas
 			references Teste(codTeste)
 			on delete cascade;
 
-ALTER TABLE Teste
-	add constraint fk_cod_pesquisador foreign key(id)
-		references Pesquisador(id)
-		on delete restrict;
+-- ALTER TABLE Teste
+	-- add constraint fk_cod_pesquisador foreign key(id)
+		-- references Pesquisador(id)
+		-- on delete restrict;
             
 ALTER TABLE Pergunta 
 	add constraint fk_codigo_teste foreign key(codTeste)

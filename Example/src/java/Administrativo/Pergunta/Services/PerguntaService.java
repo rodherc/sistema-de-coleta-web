@@ -197,7 +197,7 @@ public class PerguntaService {
         try {
             
             if (pergunta.getCodPergunta() != 0) {
-                System.out.println("pppppppppppppppppppppppppppppppppppppppppppppppppp");
+                System.out.println("----------Atualizar Pergunta-----------");
                 ps = con.prepareStatement("Update Pergunta set tipo = ?, descricaoPergunta = ?, existeDescricao = ? where codPergunta = ?");
                 //ps.setInt(1, teste.getId());
                 ps.setString(1, pergunta.getTipo().toString());
@@ -206,7 +206,7 @@ public class PerguntaService {
                 ps.setBoolean(3, pergunta.getExisteDescricao());
                 ps.executeUpdate();
             } else {
-                System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+                System.out.println("----------Criar nova Pergunta-----------");
                 ps = con.prepareStatement("Insert into Pergunta (tipo,descricaoPergunta,codTeste,existeDescricao) values (?,?)");
                 ps.setString(1, pergunta.getTipo().toString());
                 ps.setString(2, pergunta.getDescricaoPergunta());

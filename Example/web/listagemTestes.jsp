@@ -83,6 +83,7 @@
                         <tr>
                             <th>Código</th>
                             <th>Nome</th>
+                            <th> Chave de acesso</th>
                             <th width="50px"></th>
                             <th width="10px"></th>
                             <th width="10px"></th>
@@ -95,9 +96,9 @@
                             <tr>
                                 <td><c:out value="${teste.codTeste}"/></td>
                                 <td><c:out value="${teste.nome}"/></td>
-                                <td></td>
+                                <td><c:out value="${teste.chave}"/></td>
                                 
-                             <td width="10px"><a href="javascript:confirmarExclusao(<c:out value="${teste.codTeste}"/>,'<c:out value="${teste.nome}"/>');"><span class="glyphicon glyphicon-trash" style="color:red" title="Excluir"  aria-hidden="true"></span></a></td>
+                             <td width="10px"><a href="javascript:confirmarExclusao(<c:out value="${teste.codTeste}"/>,'<c:out value="${teste.nome}"/>','<c:out value="${teste.chave}"/>');"><span class="glyphicon glyphicon-trash" style="color:red" title="Excluir"  aria-hidden="true"></span></a></td>
                             
                             </tr>
                         </c:forEach>

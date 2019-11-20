@@ -28,7 +28,7 @@ public class TesteService {
         ResultSet rs = null;
         List<Teste> testes = null;
         try{
-             ps = con.prepareStatement("Select codTeste, nome, descricao from Teste where nome like ? limit ?,?");
+             ps = con.prepareStatement("Select codTeste, nome, descricao, chave from Teste where nome like ? limit ?,?");
 
             ps.setString(1, "%" + nome + "%");
             if (pagina != null) {
@@ -47,6 +47,7 @@ public class TesteService {
                 teste.setCodTeste(rs.getInt("codTeste"));
                 teste.setNome(rs.getString("nome"));
                 teste.setDescricao(rs.getString("descricao"));
+                teste.setChave(rs.getString("chave"));
                 testes.add(teste);
             }
             rs.close();
@@ -193,7 +194,7 @@ public class TesteService {
         try {
             
             if (teste.getCodTeste() != 0) {
-                System.out.println("ccccccccccccccccccccccccccccccccccccccc");
+                System.out.println("-----------Atualizar Teste----------");
                 ps = con.prepareStatement("Update Teste set nome = ?, descricao = ?, chave = ? where codTeste = ?");
                 //ps.setInt(1, teste.getId());
                 ps.setString(1, teste.getNome());
@@ -203,12 +204,12 @@ public class TesteService {
                 
                 ps.executeUpdate();
             } else {
-                System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
-                ps = con.prepareStatement("Insert into Teste (nome,descricao,chave) values (?,?,?)");
-                //ps.setInt(1, teste.getCodTeste());
-                ps.setString(1, teste.getNome());
-                ps.setString(2, teste.getDescricao());
-                ps.setString(3, teste.getChave());
+                System.out.println("-----------Criar novo teste-----------");
+                ps = con.prepareStatement("Insert into Teste (id,nome,descricao,chave) values (?,?,?,?)");
+                ps.setInt(1, teste.getId());
+                ps.setString(2, teste.getNome());
+                ps.setString(3, teste.getDescricao());
+                ps.setString(4, teste.getChave());
                 //ps.setInt(3, usuario.getTipo().getValue());
                 
               //  senha = ServiceFactory.getLoginService().gerarSenha();

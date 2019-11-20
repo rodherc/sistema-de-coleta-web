@@ -46,11 +46,11 @@ public class CadastroPerguntaController extends HttpServlet {
                 
                 PerguntaService service = new PerguntaService();
                 try{
-                    System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+                    System.out.println("----------Gravar Pergunta-----------");
                     service.gravarPergunta(pergunta);
-                    System.out.println("Gravou Pergunta");
+                    System.out.println("----------Gravou Pergunta-----------");
                 }catch(Exception ex){
-                    System.out.println("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+                    System.out.println("----------Erro-----------");
                     request.setAttribute("erro", ex);
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");

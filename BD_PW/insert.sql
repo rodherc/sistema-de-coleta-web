@@ -27,7 +27,7 @@ VALUES (2,1,'o peito do pe do pedro e preto?', 1, false);
 INSERT INTO Imagem
 VALUES(1,'ufla','imagens/ufla.jpeg');
 INSERT INTO Imagem
-VALUES(2,'ufla','imagens/ufla2.jpeg');
+VALUES(2,'ufla2','imagens/ufla2.jpeg');
 INSERT INTO Imagem
-VALUES(3,'ufla','imagens/ufla3.jpeg')
+VALUES(3,'ufla3','imagens/ufla3.jpeg')
 
