@@ -40,16 +40,10 @@ public class CadastroTesteController extends HttpServlet {
     //                Usuario usuario = null;
                  //  usuario = ServiceFactory.getUsuarioService().getUsuario(id);
                     //teste.setId(Integer.parseInt(request.getParameter("id")));
+                    
                     teste.setNome(request.getParameter("nome"));
                     teste.setDescricao(request.getParameter("descricao"));
                     teste.setChave(teste.criarChave());
-                    //Usuario usuario = (Usuario)request.getAttribute("usuario");
-                    //Integer id =(Integer)request.getSession().getAttribute("usuario.id");
-                    //Integer id = usuario.getId();
-                    //System.out.println("-------------id usuario------------");
-                    //System.out.println(id);
-                    //teste.setId(id);
-                        
 
                     TesteService service = new TesteService();
                     try{

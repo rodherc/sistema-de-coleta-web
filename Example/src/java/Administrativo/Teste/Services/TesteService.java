@@ -196,20 +196,21 @@ public class TesteService {
             if (teste.getCodTeste() != 0) {
                 System.out.println("-----------Atualizar Teste----------");
                 ps = con.prepareStatement("Update Teste set nome = ?, descricao = ?, chave = ? where codTeste = ?");
-                //ps.setInt(1, teste.getId());
+                
                 ps.setString(1, teste.getNome());
                 ps.setString(2, teste.getDescricao());
                 ps.setString(3, teste.getChave());
-               // ps.setInt(3, teste.getTipo().getValue());
+                //ps.setInt(4, teste.getId());
+                // ps.setInt(3, teste.getTipo().getValue());
                 
                 ps.executeUpdate();
             } else {
                 System.out.println("-----------Criar novo teste-----------");
                 ps = con.prepareStatement("Insert into Teste (nome,descricao,chave) values (?,?,?)");
-                //ps.setInt(1, teste.getId());
                 ps.setString(1, teste.getNome());
                 ps.setString(2, teste.getDescricao());
                 ps.setString(3, teste.getChave());
+                //ps.setInt(4, teste.getId());
                 //ps.setInt(3, usuario.getTipo().getValue());
                 
               //  senha = ServiceFactory.getLoginService().gerarSenha();

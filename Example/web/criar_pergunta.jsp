@@ -37,7 +37,7 @@
                         -->
                         <label class="control-label col-sm-2" for="tipo">Tipo:</label>
                         <div class="col-sm-10">
-                            <input type="radio" name="tipo" value="0">Ordinal<br>
+                            <input type="radio" name="tipo" value="0" checked >Ordinal<br>
                             <input type="radio" name="tipo" value="1">Continuo<br>
                         </div>
                         <!--

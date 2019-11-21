@@ -37,14 +37,10 @@ public class CadastroPerguntaController extends HttpServlet {
             if (permissoes != null && permissoes.hasComponente(Componente.USUARIO)) {
 
                 pergunta = new Pergunta();
-                //teste.setId(Integer.parseInt(request.getParameter("id")));
-                //pergunta.setTipo(Tipo.valueOf(request.getParameter("tipo")));//convertendo string para char
                 System.out.println("-----------Criar pergunta-------------");
                 pergunta.setDescricaoPergunta(request.getParameter("descricaoPergunta"));
                 //pergunta.setCodTeste(request.getParameter("codTeste")); //pegar codTeste
                 pergunta.setExisteDescricao(Boolean.parseBoolean(request.getParameter("existeDescricao")));
-                // "true" retorna true, "false" retorna false
-                //pergunta.setTipo(Tipo.valueOf(request.getParameter("tipo")));
                 pergunta.setTipo(Tipo.getTipo(Integer.parseInt(request.getParameter("tipo"))));
                 PerguntaService service = new PerguntaService();
                 try{
