@@ -39,7 +39,7 @@ public class ListagemPerguntaController extends HttpServlet {
         if (permissoes != null && permissoes.hasComponente(Componente.USUARIO)) {
             
             try{
-                String nome = request.getParameter("nome");
+                String nome = request.getParameter("codPergunta");
                 Integer pag = 1;
 
                 if (nome != null) {

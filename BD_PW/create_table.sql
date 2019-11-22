@@ -7,7 +7,7 @@ use Trabalho;
 
 
 CREATE TABLE Participante (
-    idUsuario int not null auto_increment,
+    codParticipante int not null auto_increment,
     emailParticipante varchar(45) not null,
     telefone varchar(11) not null,
     idade int not null,
