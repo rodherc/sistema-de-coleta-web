@@ -35,18 +35,17 @@
 
         <div class="container">
 
-            <form class="form-signin" action="login.do" method="POST" >
+            <form class="form-signin" action="loginChave.do" method="POST" >
 
                 <div class="form-group">
 
                     <!---->
-                    <h2 class="form-signin-heading">Por favor faça o login</h2>
+                    <h2 align="center" class="form-signin-heading">Responder Teste</h2>
 
 
-                    <label for="inputEmail" class="sr-only">Endereço de Email</label>
-                    <input type="text" id="email" name="email" class="form-control" placeholder="Digite o Email"  autofocus>
-                    <label for="inputPassword" class="sr-only">Senha</label>
-                    <input type="password" id="password" name="senha" class="form-control" placeholder="Digite a Senha" >
+                    <label for="inputChave" class="sr-only">Chave</label>
+                    <input type="text" id="chave" name="chave" class="form-control" placeholder="Digite a chave"  autofocus>
+                    
                     <!--<div class="checkbox">
                         <label>
                             <input type="checkbox" value="remember-me"> Lembrar
@@ -63,10 +62,8 @@
                             </div>
                         </div>
                     </c:if>
-
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>
-              
-                    <a class="btn btn-lg btn-primary btn-block" href = "login_pergunta.jsp">Chave de Acesso</a>
+                    <br>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Validar</button>
 
                 </div>
 
