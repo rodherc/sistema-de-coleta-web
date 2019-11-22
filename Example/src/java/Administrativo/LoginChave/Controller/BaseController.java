@@ -24,9 +24,11 @@ public class BaseController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        if (request.getSession() != null && request.getSession().getAttribute("chave") != null ) {
+        if (request.getSession() != null && request.getSession().getAttribute("login") != null ) {
+            System.out.println("---------BASECHAVEEEEEEE------");
             request.getSession().setAttribute("moduloAtual",  null);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login_pergunta.jsp");
+            System.out.println("---------BASECHAVEEEEEEE 2222222------");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("criar_participante.jsp");
             dispatcher.forward(request, response);
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("login_pergunta.jsp");

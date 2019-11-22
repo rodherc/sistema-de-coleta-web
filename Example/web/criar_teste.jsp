@@ -29,7 +29,6 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o Nome">
                         </div>
-                       <br><br><br>
                        <label class="control-label col-sm-2" for="descricao">Descricao:</label>
                         <div class="col-sm-10">
                             <textarea rows="4" cols="50" name="descricao" placeholder="Digite a descricao"></textarea>

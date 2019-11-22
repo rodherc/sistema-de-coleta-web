@@ -45,7 +45,7 @@ public class LoginController extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("baseChave.do");
                     dispatcher.forward(request, response);
                 } else {
-                    MensagemErro erros = new MensagemErro("Token invalido");
+                    MensagemErro erros = new MensagemErro("Chave invalida");
                     request.setAttribute("erros", erros);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("login_pergunta.jsp");
                     dispatcher.forward(request, response);
