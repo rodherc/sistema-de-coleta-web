@@ -1,3 +1,3 @@
 
 Select *
-from Participante
+from Resposta

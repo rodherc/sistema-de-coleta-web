@@ -8,7 +8,7 @@ package Administrativo.Pergunta.Controller;
 import Administrativo.Login.Controller.LoginController;
 import Administrativo.Login.Elementos.Componente;
 import Administrativo.Login.Elementos.Permissoes;
-import Administrativo.Teste.Entity.Teste;
+import Administrativo.Pergunta.Entity.Pergunta;
 import Administrativo.Pergunta.Services.PerguntaService;
 import Administrativo.Usuario.Entity.Usuario;
 import Util.ServiceFactory;
@@ -39,26 +39,26 @@ public class ListagemPerguntaController extends HttpServlet {
         if (permissoes != null && permissoes.hasComponente(Componente.USUARIO)) {
             
             try{
-                String nome = request.getParameter("codPergunta");
+                Integer codPergunta = Integer.parseInt(request.getParameter("codPergunta"));
                 Integer pag = 1;
 
-                if (nome != null) {
+                if (codPergunta!= null) {
                     PerguntaService service = new PerguntaService();
-                    List<Teste> testes = service.getListagemTestes(nome, pag);
-                    request.setAttribute("teste", testes);
-                    Integer qtdPag = service.getQuantidadeTestes(nome);
+                    List<Pergunta> perguntas = service.getListagemPerguntas(codPergunta, pag);
+                    request.setAttribute("pergunta", perguntas);
+                    Integer qtdPag = service.getQuantidadePerguntas(codPergunta);
                     request.setAttribute("qtdPag", qtdPag);
                     request.setAttribute("curPag", pag);
-                    request.setAttribute("nome", nome);
+                    request.setAttribute("codPergunta", codPergunta);
                 }
                 if (request.getParameter("idDelete") != null) {
                     
-                    TesteService service = new TesteService();
-                    String nomeTeste = service.excluirTeste(Integer.parseInt(request.getParameter("idDelete")));
-                    request.setAttribute("operacao", "Usuário " + nomeTeste + " deletado com sucesso.");
+                    PerguntaService service = new PerguntaService();
+                    Integer codDelete = service.excluirPergunta(Integer.parseInt(request.getParameter("idDelete")));
+                    request.setAttribute("operacao", "Pergunta " + codDelete + " deletada com sucesso.");
                 }
                 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("listagemTestes.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("listagemPerguntas.jsp");
                 dispatcher.forward(request, response);
                 
             }catch(Exception ex){

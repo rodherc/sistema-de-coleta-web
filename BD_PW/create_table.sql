@@ -17,7 +17,7 @@ CREATE TABLE Participante (
     descricaoParticipante varchar(200),
     
     
-    constraint pk_id_usuario primary key(idUsuario)
+    constraint pk_cod_Participante primary key(codParticipante)
     
 );
 
@@ -31,12 +31,12 @@ CREATE TABLE Teste (
     constraint pḱ_cod_teste primary key(codTeste)
 );
 
-CREATE TABLE Respostas (
-    idUsuario int not null,
+CREATE TABLE Resposta (
+    codParticipante int not null,
 	codTeste int not null,
     resposta varchar(50),
     
-	constraint pḱ_respostas primary key(idUsuario, codTeste)
+	constraint pḱ_resposta primary key(codParticipante, codTeste)
 );
 
 CREATE TABLE Pesquisador(

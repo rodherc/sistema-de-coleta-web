@@ -200,7 +200,7 @@
     }
 
     function excluir(id) {
-        $(location).attr('href', "listagemTeste.do?idDelete=" + id);
+        $(location).attr('href', "listagemPergunta.do?idDelete=" + id);
     }
 </script>
 

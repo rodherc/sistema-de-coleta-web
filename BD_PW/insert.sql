@@ -14,9 +14,9 @@ VALUES (1,11,'Teste 1','quando o teste é bao é bao','kpsa');
 INSERT INTO Teste
 VALUES (2,22,'Teste 2','quando o teste é ruim é ruim','ihah');
 
-INSERT INTO Respostas
+INSERT INTO Resposta
 VALUES (1, 1, 'A,B,C,D');
-INSERT INTO Respostas
+INSERT INTO Resposta
 VALUES (2, 1, 'D,D,D,D');
 
 INSERT INTO Imagem

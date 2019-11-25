@@ -1,6 +1,6 @@
-ALTER TABLE Respostas 
-	add constraint fk_id_usuario foreign key(idUsuario)
-			references Participante(idUsuario)
+ALTER TABLE Resposta
+	add constraint fk_cod_participante foreign key(codParticipante)
+			references Participante(codParticipante)
 			on delete cascade,
 	add constraint fk_cod_teste foreign key(codTeste)
 			references Teste(codTeste)

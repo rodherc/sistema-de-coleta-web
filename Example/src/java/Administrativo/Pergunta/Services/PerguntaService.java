@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class PerguntaService {
         private static int QTD_PAGINACAO = 10;
-        public List<Pergunta> getListagemPerguntas(String codPergunta, Integer pagina) throws Exception {
+        public List<Pergunta> getListagemPerguntas(Integer codPergunta, Integer pagina) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
 
@@ -51,6 +51,7 @@ public class PerguntaService {
                 //codPergunta
                 pergunta.setCodPergunta(rs.getInt("codPergunta"));
                 pergunta.setExisteDescricao(rs.getBoolean("existeDescricao"));
+                //pergunta.setCodTeste();
                 perguntas.add(pergunta);
             }
             rs.close();
@@ -109,7 +110,7 @@ public class PerguntaService {
 
     return pergunta;
 }
-    public Integer getQuantidadeTestes(Integer codPergunta) throws Exception {
+    public Integer getQuantidadePerguntas(Integer codPergunta) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
         PreparedStatement ps = null;
@@ -238,9 +239,9 @@ public class PerguntaService {
         return "ai deu bao de mais da conta";
     }
     
-    public String excluirPergunta(Integer codPergunta) throws Exception {
+    public Integer excluirPergunta(Integer codPergunta) throws Exception {
 
-        String nome = null;
+        //String nome = null;
 
         Connection con = DataSource.getInstance().getConnection();
 
@@ -281,7 +282,8 @@ public class PerguntaService {
             con.close();
         }
         // ver o que ele faz com retornooo
-        return nome;
+        //return nome;
+        return codPergunta;
     }
     private static int MAX = 20;
 
