@@ -95,15 +95,13 @@
                         <c:forEach items="${pergunta}" var="pergunta">
                             <tr>
                                 <td><c:out value="${pergunta.codPergunta}"/></td>
-                                <td><c:out value="${teste.nome}"/></td>
-                                <td><c:out value="${teste.chave}"/></td>
                                 
-                             <td width="10px"><a href="javascript:confirmarExclusao(<c:out value="${teste.codPergunta}"/>,'<c:out value="${teste.nome}"/>','<c:out value="${teste.chave}"/>');"><span class="glyphicon glyphicon-trash" style="color:red" title="Excluir"  aria-hidden="true"></span></a></td>
+                             <td width="10px"><a href="javascript:confirmarExclusao(<c:out value="${teste.codPergunta}"/>);"><span class="glyphicon glyphicon-trash" style="color:red" title="Excluir"  aria-hidden="true"></span></a></td>
                             
                             </tr>
                         </c:forEach>
                     
-                        <td><a href="criar_teste.jsp?idLoad=0" label= "Cadastrar"  class="btn btn-default btn pull-left"><span title="Adicionar" /> Adicionar</a></td>
+                        <td><a href="criar_pergunta.jsp?idLoad=0" label= "Cadastrar"  class="btn btn-default btn pull-left"><span title="Adicionar" /> Adicionar</a></td>
                         <td></td>
                         <td></td>
                         <td></td> 

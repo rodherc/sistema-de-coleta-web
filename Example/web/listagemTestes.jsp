@@ -99,7 +99,7 @@
                                 <td><c:out value="${teste.chave}"/></td>
                                 
                              <td width="10px"><a href="javascript:confirmarExclusao(<c:out value="${teste.codTeste}"/>,'<c:out value="${teste.nome}"/>','<c:out value="${teste.chave}"/>');"><span class="glyphicon glyphicon-trash" style="color:red" title="Excluir"  aria-hidden="true"></span></a></td>
-                            
+                            <td><a href="listagemPerguntas.jsp?idLoad=0" label= "Listar"  class="btn btn-default btn pull-left"><span title="Visualizar" /> Visualizar</a></td>
                             </tr>
                         </c:forEach>
                     
