@@ -9,7 +9,6 @@ import Administrativo.Login.Controller.LoginController;
 import Administrativo.Login.Elementos.Componente;
 import Administrativo.Login.Elementos.Permissoes;
 import Administrativo.Teste.Entity.Teste;
-import Administrativo.Usuario.Entity.Usuario;
 import Administrativo.Teste.Services.TesteService;
 import java.io.IOException;
 import java.util.logging.Level;

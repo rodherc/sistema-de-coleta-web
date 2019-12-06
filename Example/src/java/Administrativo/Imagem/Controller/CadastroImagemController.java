@@ -10,7 +10,6 @@ import Administrativo.Imagem.Services.ImagemService;
 import Administrativo.Login.Controller.LoginController;
 import Administrativo.Login.Elementos.Componente;
 import Administrativo.Login.Elementos.Permissoes;
-import Administrativo.Teste.Services.TesteService;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

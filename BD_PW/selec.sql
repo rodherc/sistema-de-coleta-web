@@ -1,3 +1,3 @@
 
 Select *
-from Resposta
+from Perguntas

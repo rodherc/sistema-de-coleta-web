@@ -7,7 +7,6 @@ package Administrativo.Teste.Services;
 
 import Administrativo.Teste.Entity.Teste;
 import Util.DataSource;
-import Util.ServiceFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

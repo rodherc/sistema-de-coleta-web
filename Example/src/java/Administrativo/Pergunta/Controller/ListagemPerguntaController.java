@@ -10,8 +10,6 @@ import Administrativo.Login.Elementos.Componente;
 import Administrativo.Login.Elementos.Permissoes;
 import Administrativo.Pergunta.Entity.Pergunta;
 import Administrativo.Pergunta.Services.PerguntaService;
-import Administrativo.Usuario.Entity.Usuario;
-import Util.ServiceFactory;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,7 +20,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static org.apache.avalon.framework.container.ContainerUtil.service;
 
 /**
  *

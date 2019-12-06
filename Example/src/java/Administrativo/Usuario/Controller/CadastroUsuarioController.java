@@ -5,7 +5,6 @@ import Administrativo.Login.Elementos.Componente;
 import Administrativo.Login.Elementos.Permissoes;
 import Administrativo.Usuario.Entity.Tipo;
 import Administrativo.Usuario.Entity.Usuario;
-import Administrativo.Login.Services.LoginService; 
 import Util.MensagemErro;
 import Util.ServiceFactory;
 import java.io.IOException;

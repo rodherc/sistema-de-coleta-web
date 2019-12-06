@@ -5,7 +5,6 @@
  */
 package Util;
 
-import Administrativo.Login.Services.LoginService;
 import Administrativo.LoginChave.Services.LoginChaveService;
 
 /**

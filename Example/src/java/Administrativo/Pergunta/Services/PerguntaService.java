@@ -8,7 +8,6 @@ package Administrativo.Pergunta.Services;
 import Administrativo.Pergunta.Entity.Pergunta;
 import Administrativo.Pergunta.Entity.Tipo;
 import Util.DataSource;
-import Util.ServiceFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
