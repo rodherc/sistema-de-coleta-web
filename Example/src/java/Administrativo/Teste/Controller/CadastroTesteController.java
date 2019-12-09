@@ -38,15 +38,16 @@ public class CadastroTesteController extends HttpServlet {
                     teste = new Teste();
     //                Usuario usuario = null;
                  //  usuario = ServiceFactory.getUsuarioService().getUsuario(id);
-                    //teste.setId(Integer.parseInt(request.getParameter("id")));
-                    
+                    //teste.setId((int) request.getSessiongetAttribute("id"));
                     teste.setNome(request.getParameter("nome"));
                     teste.setDescricao(request.getParameter("descricao"));
                     teste.setChave(teste.criarChave());
+                    
 
                     TesteService service = new TesteService();
                     try{
-                        service.gravarTeste(teste);
+                        teste.setId(service.gravarTeste(teste));
+                        request.getSession().setAttribute("codTeste",teste.getId());
                         System.out.println("---------Gravou Teste-------------");
                     }catch(Exception ex){
                         request.setAttribute("erro", ex);

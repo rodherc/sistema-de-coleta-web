@@ -39,7 +39,7 @@ public class CadastroPerguntaController extends HttpServlet {
                 pergunta = new Pergunta();
                 System.out.println("-----------Criar pergunta-------------");
                 pergunta.setDescricaoPergunta(request.getParameter("descricaoPergunta"));
-                //pergunta.setCodTeste(request.getParameter("codTeste")); //pegar codTeste
+                pergunta.setCodTeste((int)request.getSession().getAttribute("codTeste"));
                 pergunta.setExisteDescricao(Boolean.parseBoolean(request.getParameter("existeDescricao")));
                 pergunta.setTipo(Tipo.getTipo(Integer.parseInt(request.getParameter("tipo"))));
                 PerguntaService service = new PerguntaService();

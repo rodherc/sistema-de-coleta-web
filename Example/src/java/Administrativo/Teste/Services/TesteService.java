@@ -182,13 +182,14 @@ public class TesteService {
 
         return existe;
     }
-    public String gravarTeste(Teste teste) throws Exception {
+    public int gravarTeste(Teste teste) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
 
         //String senha = null;
 
         PreparedStatement ps = null;
+        int codTeste = 0;
 
         try {
             
@@ -217,6 +218,17 @@ public class TesteService {
 
               //  ps.setString(4, md5);
                 ps.execute();
+                
+                PreparedStatement ss = null;
+                ss = con.prepareStatement("Select codTeste from Teste where chave = ? ");
+                ss.setString(1, teste.getChave());
+ 
+                ResultSet rr = ss.executeQuery();
+                List<Teste> testes = null;
+                rr.next();
+                codTeste = rr.getInt("codTeste");
+                rr.close();
+                
             }
 
         } finally {
@@ -229,7 +241,7 @@ public class TesteService {
         }
 
         //return senha;
-        return "ai deu bao de mais da conta";
+        return codTeste;
     }
     
     public String excluirTeste(Integer id) throws Exception {

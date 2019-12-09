@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class PerguntaService {
         private static int QTD_PAGINACAO = 10;
-        public List<Pergunta> getListagemPerguntas(Integer codPergunta, Integer pagina) throws Exception {
+        public List<Pergunta> getListagemPerguntas(Integer codPergunta,Integer codTeste ,Integer pagina) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
 
@@ -28,9 +28,10 @@ public class PerguntaService {
         ResultSet rs = null;
         List<Pergunta> perguntas = null;
         try{
-             ps = con.prepareStatement("Select codPergunta, tipo, descricaoPergunta, codTeste, existeDescricao from Pergunta where codPergunta like ? limit ?,?");
+             ps = con.prepareStatement("Select codPergunta, tipo, descricaoPergunta, codTeste, existeDescricao from Pergunta where codTeste = ? and codPergunta like ? limit ?,?");
 
-            ps.setString(1, "%" + codPergunta + "%");
+            ps.setString(1,"%" +codTeste + "%");
+            ps.setString(2, "%" + codPergunta + "%");
             if (pagina != null) {
                 ps.setInt(2, (pagina - 1) * QTD_PAGINACAO);
                 ps.setInt(3, QTD_PAGINACAO);
@@ -212,7 +213,7 @@ public class PerguntaService {
                  ps = con.prepareStatement("Insert into Pergunta (descricaoPergunta,codTeste,existeDescricao,tipo) values (?,?,?,?)");
                 //ps.setString(1, pergunta.getTipo().toString());
                 ps.setString(1, pergunta.getDescricaoPergunta());
-                ps.setInt(2,1);
+                ps.setInt(2,pergunta.getCodTeste());
                 ps.setBoolean(3,pergunta.getExisteDescricao());
                 ps.setInt(4, pergunta.getTipo().getValue());
                 //ps.setInt(3,pergunta.getCodTeste());

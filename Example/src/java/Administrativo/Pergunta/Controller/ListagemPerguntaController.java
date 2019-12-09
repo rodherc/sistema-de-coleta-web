@@ -41,7 +41,8 @@ public class ListagemPerguntaController extends HttpServlet {
 
                 if (codPergunta!= null) {
                     PerguntaService service = new PerguntaService();
-                    List<Pergunta> perguntas = service.getListagemPerguntas(codPergunta, pag);
+                    int 
+                    List<Pergunta> perguntas = service.getListagemPerguntas(codPergunta, ,pag);
                     request.setAttribute("pergunta", perguntas);
                     Integer qtdPag = service.getQuantidadePerguntas(codPergunta);
                     request.setAttribute("qtdPag", qtdPag);
