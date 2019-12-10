@@ -10,6 +10,8 @@ import Administrativo.Login.Elementos.Componente;
 import Administrativo.Login.Elementos.Permissoes;
 import Administrativo.Pergunta.Entity.Pergunta;
 import Administrativo.Pergunta.Services.PerguntaService;
+import Administrativo.Teste.Entity.Teste;
+import Administrativo.Teste.Services.TesteService;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -36,26 +38,25 @@ public class ListagemPerguntaController extends HttpServlet {
         if (permissoes != null && permissoes.hasComponente(Componente.USUARIO)) {
             
             try{
-                Integer codPergunta = Integer.parseInt(request.getParameter("codPergunta"));
+                String codTeste = request.getParameter("codTeste");
+                codTeste = "3";
+                System.out.println("TENTANDO IMPRIMIR O COD TESTE");
+                System.out.println(codTeste);
+                System.out.println("e esse aqui ^^^^");
                 Integer pag = 1;
 
-                if (codPergunta!= null) {
+                if (codTeste != null) {
                     PerguntaService service = new PerguntaService();
-                    int 
-                    List<Pergunta> perguntas = service.getListagemPerguntas(codPergunta, ,pag);
+                    System.out.println("entra aqui? 1");
+                    List<Pergunta> perguntas = service.getListagemPerguntas(codTeste, pag);
+                    System.out.println("entra aqui? 2");
                     request.setAttribute("pergunta", perguntas);
-                    Integer qtdPag = service.getQuantidadePerguntas(codPergunta);
+                    Integer qtdPag = service.getQuantidadePerguntas(codTeste);
                     request.setAttribute("qtdPag", qtdPag);
                     request.setAttribute("curPag", pag);
-                    request.setAttribute("codPergunta", codPergunta);
+                    request.setAttribute("codTeste", codTeste);
                 }
-                if (request.getParameter("idDelete") != null) {
-                    
-                    PerguntaService service = new PerguntaService();
-                    Integer codDelete = service.excluirPergunta(Integer.parseInt(request.getParameter("idDelete")));
-                    request.setAttribute("operacao", "Pergunta " + codDelete + " deletada com sucesso.");
-                }
-                
+
                 RequestDispatcher dispatcher = request.getRequestDispatcher("listagemPerguntas.jsp");
                 dispatcher.forward(request, response);
                 

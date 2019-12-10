@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class PerguntaService {
         private static int QTD_PAGINACAO = 10;
-        public List<Pergunta> getListagemPerguntas(Integer codPergunta,Integer codTeste ,Integer pagina) throws Exception {
+        public List<Pergunta> getListagemPerguntas(String codTeste ,Integer pagina) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
 
@@ -28,10 +28,10 @@ public class PerguntaService {
         ResultSet rs = null;
         List<Pergunta> perguntas = null;
         try{
-             ps = con.prepareStatement("Select codPergunta, tipo, descricaoPergunta, codTeste, existeDescricao from Pergunta where codTeste = ? and codPergunta like ? limit ?,?");
+             ps = con.prepareStatement("Select codPergunta, tipo, descricaoPergunta, codTeste, existeDescricao from Pergunta where codTeste like ? limit ?,?");
 
-            ps.setString(1,"%" +codTeste + "%");
-            ps.setString(2, "%" + codPergunta + "%");
+            ps.setString(1,codTeste);
+            
             if (pagina != null) {
                 ps.setInt(2, (pagina - 1) * QTD_PAGINACAO);
                 ps.setInt(3, QTD_PAGINACAO);
@@ -45,13 +45,12 @@ public class PerguntaService {
 
             while (rs.next()) {
                 Pergunta pergunta = new Pergunta();
-                //teste.setId(rs.getInt("id"));
+                pergunta.setCodPergunta(rs.getInt("codPergunta"));
                 pergunta.setTipo(Tipo.getTipo(rs.getInt("tipo")));
                 pergunta.setDescricaoPergunta(rs.getString("descricaoPergunta"));
-                //codPergunta
-                pergunta.setCodPergunta(rs.getInt("codPergunta"));
+                pergunta.setCodTeste(rs.getInt("codTeste"));
                 pergunta.setExisteDescricao(rs.getBoolean("existeDescricao"));
-                //pergunta.setCodTeste();
+                
                 perguntas.add(pergunta);
             }
             rs.close();
@@ -70,47 +69,8 @@ public class PerguntaService {
 
         return perguntas;
     }
-        
-    public Pergunta getPergunta(Integer codPergunta) throws Exception {
-
-    Connection con = DataSource.getInstance().getConnection();
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    Pergunta pergunta = null;
-
-    try {
-
-        ps = con.prepareStatement("Select codPergunta, tipo, descricaoPergunta, codTeste, existeDescricao from Pergunta where id = ?");
-
-        ps.setInt(1, codPergunta);
-
-        rs = ps.executeQuery();
-
-        if (rs.next()) {
-            pergunta = new Pergunta();
-            pergunta.setCodPergunta(codPergunta);
-            pergunta.setTipo(Tipo.getTipo(rs.getInt("tipo")));
-            pergunta.setDescricaoPergunta(rs.getString("descricaoPergunta"));
-            pergunta.setExisteDescricao(rs.getBoolean("existeDescricao"));
-        }
-
-        rs.close();
-    } finally {
-
-        if (ps != null) {
-            ps.close();
-        }
-
-        if (rs != null) {
-            rs.close();
-        }
-
-        con.close();
-    }
-
-    return pergunta;
-}
-    public Integer getQuantidadePerguntas(Integer codPergunta) throws Exception {
+    
+    public Integer getQuantidadePerguntas(String codTeste) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
         PreparedStatement ps = null;
@@ -119,8 +79,8 @@ public class PerguntaService {
         Integer qtd = null;
 
         try {
-            ps = con.prepareStatement("Select count(codPergunta) as qtd from Pergunta where codPergunta like ?");
-            ps.setString(1, "%" + codPergunta + "%");
+            ps = con.prepareStatement("Select count(codPergunta) as qtd from Pergunta where codTeste like ?");
+            ps.setString(1,codTeste);
             rs = ps.executeQuery();
             perguntas = new ArrayList<>();
             rs.next();
@@ -141,52 +101,7 @@ public class PerguntaService {
 
         return ((qtd / QTD_PAGINACAO) + (qtd % QTD_PAGINACAO));
     }
-    /*public boolean existeNome(Pergunta perguntas, boolean update) throws Exception {
-
-        Connection con = DataSource.getInstance().getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        Integer qtd = null;
-        boolean existe = false;
-
-        try {
-            if (!update) {
-                ps = con.prepareStatement("Select count(codTeste) as qtd from Teste where nome = ?");
-                ps.setString(1, teste.getNome());
-                rs = ps.executeQuery();
-                rs.next();
-                qtd = rs.getInt("qtd");
-                rs.close();
-                if (qtd > 0) {
-                    existe = true;
-                }
-            } else {
-                ps = con.prepareStatement("Select count(codTeste) as qtd from Teste where nome = ? and codTeste <> ?");
-                ps.setString(1, teste.getNome());
-                ps.setInt(2, teste.getId());
-                rs = ps.executeQuery();
-                rs.next();
-                qtd = rs.getInt("qtd");
-                rs.close();
-                if (qtd > 0) {
-                    existe = true;
-                }
-            }
-        } finally {
-
-            if (ps != null) {
-                ps.close();
-            }
-
-            if (rs != null) {
-                rs.close();
-            }
-
-            con.close();
-        }
-
-        return existe;
-    }*/
+    
     public String gravarPergunta(Pergunta pergunta) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
@@ -204,6 +119,7 @@ public class PerguntaService {
                 //ps.setInt(1, teste.getId());
                 //ps.setString(1, pergunta.getTipo().toString());
                 ps.setString(1, pergunta.getDescricaoPergunta());
+                ps.setString(2,"%" +pergunta.getCodPergunta() + "%");
                // ps.setInt(3, teste.getTipo().getValue());
                 //ps.setBoolean(3, pergunta.getExisteDescricao());
                 ps.executeUpdate();
@@ -286,50 +202,5 @@ public class PerguntaService {
         return codPergunta;
     }
     private static int MAX = 20;
-
-    public List<Pergunta> getListagemPerguntas(Integer codPergunta) throws Exception {
-
-        Connection con = DataSource.getInstance().getConnection();
-
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        List<Pergunta> perguntas = null;
-        try {
-
-            ps = con.prepareStatement("Select * from Pergunta where codPergunta like ? limit ?,?");
-
-            ps.setString(1, "%" + codPergunta + "%");
-            ps.setInt(2, 0);
-            ps.setInt(3, MAX);
-
-            rs = ps.executeQuery();
-            perguntas = new ArrayList<>();
-
-            while (rs.next()) {
-                Pergunta pergunta = new Pergunta();
-                pergunta.setCodPergunta(codPergunta);
-                pergunta.setTipo(Tipo.getTipo(rs.getInt("tipo")));
-                pergunta.setDescricaoPergunta(rs.getString("descricaoPergunta"));
-                pergunta.setExisteDescricao(rs.getBoolean("existeDescricao"));
-                perguntas.add(pergunta);
-            }
-
-            rs.close();
-
-        } finally {
-
-            if (ps != null) {
-                ps.close();
-            }
-
-            if (rs != null) {
-                rs.close();
-            }
-
-            con.close();
-        }
-
-        return perguntas;
-    }
 }
 

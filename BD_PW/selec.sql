@@ -1,3 +1,2 @@
 
-Select *
-from Teste
+Select * from Pergunta

@@ -52,7 +52,7 @@
 
             <p></p>
 
-            <c:if test="${testes == null}">
+            <c:if test="${perguntas == null}">
                 <div class="alert alert-warning" role="alert">Nenhuma busca foi executada.</div>
             </c:if>    
                 
@@ -81,9 +81,9 @@
                 <table class="table table-hover">
                     <thead class="thead-inverse">
                         <tr>
-                            <th>Código</th>
-                            <th>Nome</th>
-                            <th> Chave de acesso</th>
+                            <th>codPergunta</th>
+                            <th>Tipo</th>
+                            <th>Descricao Pergunta</th>
                             <th width="50px"></th>
                             <th width="10px"></th>
                             <th width="10px"></th>
@@ -95,8 +95,10 @@
                         <c:forEach items="${pergunta}" var="pergunta">
                             <tr>
                                 <td><c:out value="${pergunta.codPergunta}"/></td>
+                                <td><c:out value="${pergunta.tipo}"/></td>
+                                <td><c:out value="${pergunta.descricaoPergunta}"/></td>
                                 
-                             <td width="10px"><a href="javascript:confirmarExclusao(<c:out value="${teste.codPergunta}"/>);"><span class="glyphicon glyphicon-trash" style="color:red" title="Excluir"  aria-hidden="true"></span></a></td>
+                             <td width="10px"><a href="javascript:confirmarExclusao(<c:out value="${pergunta.codPergunta}"/>);"><span class="glyphicon glyphicon-trash" style="color:red" title="Excluir"  aria-hidden="true"></span></a></td>
                             
                             </tr>
                         </c:forEach>
@@ -118,7 +120,7 @@
                 <%
                     Integer curPag = (Integer) request.getAttribute("curPag");
                     Integer qtdPag = (Integer) request.getAttribute("qtdPag");
-                    String nome = (String) request.getAttribute("nome");
+                    String codTeste = (String) request.getAttribute("codTeste");
                     if (qtdPag != null) {
                 %>
                 <ul class="pagination">
@@ -130,10 +132,10 @@
                         if (curPag == 1) {
                             prevClass = "class = 'disabled'";
                         } else {
-                            prevLink = "listagemUsuario.do?curPag=";
+                            prevLink = "listagemPergunta.do?curPag=";
                             prevLink += curPag - 1;
-                            prevLink += "&nome=";
-                            prevLink += nome;
+                            prevLink += "&codTeste=";
+                            prevLink += codTeste;
                         }
                     %>
                     <li <%=prevClass%>>
@@ -149,7 +151,7 @@
                             if (i == curPag.intValue()) {
                                 active = "class='active'";
                             }
-                    %><li <%=active%> ><a href="listagemUsuario.do?curPag=<%=i%>&nome=<%=nome%>"><%=i%></a></li><%
+                    %><li <%=active%> ><a href="listagemPergunta.do?curPag=<%=i%>&codTeste=<%=codTeste%>"><%=i%></a></li><%
                         }
                         %>
 
@@ -160,10 +162,10 @@
                         if (curPag == qtdPag) {
                             nextClass = "class = 'disabled'";
                         } else {
-                            nextLink = "listagemUsuario.do?curPag=";
+                            nextLink = "listagemPergunta.do?curPag=";
                             nextLink += curPag + 1;
-                            nextLink += "&nome=";
-                            nextLink += nome;
+                            nextLink += "&codTeste=";
+                            nextLink += codTeste;
                         }
                     %>
                     <li <%=nextClass%>>
