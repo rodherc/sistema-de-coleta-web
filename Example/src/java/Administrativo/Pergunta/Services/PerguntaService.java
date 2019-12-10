@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class PerguntaService {
         private static int QTD_PAGINACAO = 10;
-        public List<Pergunta> getListagemPerguntas(String codTeste ,Integer pagina) throws Exception {
+        public List<Pergunta> getListagemPerguntas(int codTeste ,Integer pagina) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
 
@@ -30,7 +30,7 @@ public class PerguntaService {
         try{
              ps = con.prepareStatement("Select codPergunta, tipo, descricaoPergunta, codTeste, existeDescricao from Pergunta where codTeste like ? limit ?,?");
 
-            ps.setString(1,codTeste);
+            ps.setString(1,"%"+codTeste+"%");
             
             if (pagina != null) {
                 ps.setInt(2, (pagina - 1) * QTD_PAGINACAO);
@@ -70,7 +70,7 @@ public class PerguntaService {
         return perguntas;
     }
     
-    public Integer getQuantidadePerguntas(String codTeste) throws Exception {
+    public Integer getQuantidadePerguntas(int codTeste) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
         PreparedStatement ps = null;
@@ -80,7 +80,7 @@ public class PerguntaService {
 
         try {
             ps = con.prepareStatement("Select count(codPergunta) as qtd from Pergunta where codTeste like ?");
-            ps.setString(1,codTeste);
+            ps.setString(1,"%"+codTeste+"%");
             rs = ps.executeQuery();
             perguntas = new ArrayList<>();
             rs.next();

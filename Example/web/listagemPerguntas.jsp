@@ -41,28 +41,10 @@
 
             <div class="row" >
 
-                <form class="navbar-form navbar-left" role="search" method="POST" action="listagemPergunta.do">
-                    <div class="form-group">
-                        <input type="text" name="nome" class="form-control" placeholder="Digite um nome"> 
-                    </div>
-                    <button type="submit" class="btn btn-default">Buscar</button>
-                </form>
-
             </div><!-- /.row -->
 
             <p></p>
 
-            <c:if test="${perguntas == null}">
-                <div class="alert alert-warning" role="alert">Nenhuma busca foi executada.</div>
-            </c:if>    
-                
-            <c:if test="${filtro != null}">
-                <div class="alert alert-info" role="alert"><c:out value="${filtro}"/></div>
-            </c:if>
-                
-            <c:if test="${operacao != null}">
-                <div class="alert alert-success" role="alert"><c:out value="${operacao}"/></div>
-            </c:if>
                 
             <div class="row" >
 
@@ -103,7 +85,8 @@
                             </tr>
                         </c:forEach>
                     
-                        <td><a href="criar_pergunta.jsp?idLoad=0" label= "Cadastrar"  class="btn btn-default btn pull-left"><span title="Adicionar" /> Adicionar</a></td>
+                    <!--<td><a href="criar_pergunta.jsp?idLoad=0" label= "Cadastrar"  class="btn btn-default btn pull-left"><span title="Adicionar" /> Adicionar</a></td>
+                        -->
                         <td></td>
                         <td></td>
                         <td></td> 
@@ -120,7 +103,7 @@
                 <%
                     Integer curPag = (Integer) request.getAttribute("curPag");
                     Integer qtdPag = (Integer) request.getAttribute("qtdPag");
-                    String codTeste = (String) request.getAttribute("codTeste");
+                    Integer codTeste = (Integer)request.getAttribute("codTeste");
                     if (qtdPag != null) {
                 %>
                 <ul class="pagination">

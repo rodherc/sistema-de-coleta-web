@@ -38,16 +38,18 @@ public class ListagemPerguntaController extends HttpServlet {
         if (permissoes != null && permissoes.hasComponente(Componente.USUARIO)) {
             
             try{
-                String codTeste = request.getParameter("codTeste");
-                codTeste = "3";
+                System.out.println("TENTANDO TESTE");
+                int codTeste = Integer.parseInt(request.getParameter("idVisu"));
                 System.out.println("TENTANDO IMPRIMIR O COD TESTE");
                 System.out.println(codTeste);
                 System.out.println("e esse aqui ^^^^");
                 Integer pag = 1;
-
-                if (codTeste != null) {
+                //codTeste = 1;
+                
+                if (codTeste != 0) {
                     PerguntaService service = new PerguntaService();
                     System.out.println("entra aqui? 1");
+                    System.out.println(codTeste);
                     List<Pergunta> perguntas = service.getListagemPerguntas(codTeste, pag);
                     System.out.println("entra aqui? 2");
                     request.setAttribute("pergunta", perguntas);
