@@ -48,7 +48,6 @@ public class CadastroParticipanteController extends HttpServlet {
                     ParticipanteService service = new ParticipanteService();
                     try{
                         service.gravarParticipante(participante);
-                        System.out.println("---------Gravou Participante-------------");
                     }catch(Exception ex){
                         request.setAttribute("erro", ex);
                         Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +58,6 @@ public class CadastroParticipanteController extends HttpServlet {
                       dispatcher.forward(request, response);
                 }
             else{
-                System.out.println("-----------Participante invalido-----------");
                 request.setAttribute("erro", new Exception("Participante Inválido"));
                 RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
                 dispatcher.forward(request, response);

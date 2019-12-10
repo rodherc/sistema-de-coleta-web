@@ -15,15 +15,17 @@ public class Pergunta {
     private String descricaoPergunta;
     private int codTeste;
     private boolean existeDescricao;
+    private String[] imagens;
 
     public Pergunta(){}
 
-    public Pergunta(int codPergunta, Tipo tipo, String descricaoPergunta, int codTeste, boolean existeDescricao) {
+    public Pergunta(int codPergunta, Tipo tipo, String descricaoPergunta, int codTeste, boolean existeDescricao,String[] imagens) {
         this.codPergunta = codPergunta;
         this.tipo = tipo;
         this.descricaoPergunta = descricaoPergunta;
         this.codTeste = codTeste;
         this.existeDescricao = existeDescricao;
+        this.imagens = imagens;
     }
 
     public int getCodPergunta() {
@@ -64,6 +66,14 @@ public class Pergunta {
 
     public void setExisteDescricao(boolean existeDescricao) {
         this.existeDescricao = existeDescricao;
+    }
+
+    public String[] getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(String[] imagens) {
+        this.imagens = imagens;
     }
     
     

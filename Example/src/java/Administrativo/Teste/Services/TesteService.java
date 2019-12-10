@@ -194,14 +194,12 @@ public class TesteService {
         try {
             
             if (teste.getCodTeste() != 0) {
-                System.out.println("-----------Atualizar Teste----------");
+
                 ps = con.prepareStatement("Update Teste set nome = ?, descricao = ?, chave = ? where codTeste = ?");
                 
                 ps.setString(1, teste.getNome());
                 ps.setString(2, teste.getDescricao());
                 ps.setString(3, teste.getChave());
-                //ps.setInt(4, teste.getId());
-                // ps.setInt(3, teste.getTipo().getValue());
                 
                 ps.executeUpdate();
             } else {
@@ -210,13 +208,6 @@ public class TesteService {
                 ps.setString(1, teste.getNome());
                 ps.setString(2, teste.getDescricao());
                 ps.setString(3, teste.getChave());
-                //ps.setInt(4, teste.getId());
-                //ps.setInt(3, usuario.getTipo().getValue());
-                
-              //  senha = ServiceFactory.getLoginService().gerarSenha();
-              //  String md5 = ServiceFactory.getLoginService().gerarMD5(senha);
-
-              //  ps.setString(4, md5);
                 ps.execute();
                 
                 PreparedStatement ss = null;

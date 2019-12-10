@@ -22,7 +22,6 @@ public class ImagemService {
         public List<Imagem> getListagemImagens(String nome, Integer pagina) throws Exception {
 
         Connection con = DataSource.getInstance().getConnection();
-            System.out.println("vai se fudeeeeeeeeeeeeeeeeeeeeeeeee");
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Imagem> imagens = null;
@@ -61,7 +60,6 @@ public class ImagemService {
 
             con.close();
         }
-            System.out.println("aquiiiiiiiiiiiiiiiiiiiiiiiiiiii");
         return imagens;
     }
         

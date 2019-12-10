@@ -1,2 +1,2 @@
 
-Select * from Pergunta
+Select * from Imagem

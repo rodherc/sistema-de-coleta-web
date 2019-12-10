@@ -36,9 +36,6 @@ public class CadastroTesteController extends HttpServlet {
             if (permissoes != null && permissoes.hasComponente(Componente.USUARIO)) {
                 if (request.getParameter("nome") != "") {
                     teste = new Teste();
-    //                Usuario usuario = null;
-                 //  usuario = ServiceFactory.getUsuarioService().getUsuario(id);
-                    //teste.setId((int) request.getSessiongetAttribute("id"));
                     teste.setNome(request.getParameter("nome"));
                     teste.setDescricao(request.getParameter("descricao"));
                     teste.setChave(teste.criarChave());
@@ -48,7 +45,6 @@ public class CadastroTesteController extends HttpServlet {
                     try{
                         teste.setId(service.gravarTeste(teste));
                         request.getSession().setAttribute("codTeste",teste.getId());
-                        System.out.println("---------Gravou Teste-------------");
                     }catch(Exception ex){
                         request.setAttribute("erro", ex);
                         Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +55,6 @@ public class CadastroTesteController extends HttpServlet {
                       dispatcher.forward(request, response);
                 }
             else{
-                System.out.println("-----------Teste invalido-----------");
                 request.setAttribute("erro", new Exception("Teste Inválido"));
                 RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");
                 dispatcher.forward(request, response);

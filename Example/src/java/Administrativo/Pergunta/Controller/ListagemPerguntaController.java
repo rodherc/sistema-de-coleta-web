@@ -10,8 +10,6 @@ import Administrativo.Login.Elementos.Componente;
 import Administrativo.Login.Elementos.Permissoes;
 import Administrativo.Pergunta.Entity.Pergunta;
 import Administrativo.Pergunta.Services.PerguntaService;
-import Administrativo.Teste.Entity.Teste;
-import Administrativo.Teste.Services.TesteService;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -38,20 +36,14 @@ public class ListagemPerguntaController extends HttpServlet {
         if (permissoes != null && permissoes.hasComponente(Componente.USUARIO)) {
             
             try{
-                System.out.println("TENTANDO TESTE");
                 int codTeste = Integer.parseInt(request.getParameter("idVisu"));
-                System.out.println("TENTANDO IMPRIMIR O COD TESTE");
-                System.out.println(codTeste);
-                System.out.println("e esse aqui ^^^^");
                 Integer pag = 1;
                 //codTeste = 1;
                 
                 if (codTeste != 0) {
                     PerguntaService service = new PerguntaService();
-                    System.out.println("entra aqui? 1");
                     System.out.println(codTeste);
                     List<Pergunta> perguntas = service.getListagemPerguntas(codTeste, pag);
-                    System.out.println("entra aqui? 2");
                     request.setAttribute("pergunta", perguntas);
                     Integer qtdPag = service.getQuantidadePerguntas(codTeste);
                     request.setAttribute("qtdPag", qtdPag);
