@@ -41,13 +41,10 @@ public class ListagemImagemController extends HttpServlet {
                 Integer pag = 1;
 
                 if (nome != null) {
-                    System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     ImagemService service = new ImagemService();
                     List<Imagem> imagens = service.getListagemImagens(nome, pag);
-                    System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyy");
                     request.setAttribute("imagem", imagens);
                     Integer qtdPag = service.getQuantidadeImagens(nome);
-                    System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
                     request.setAttribute("qtdPag", qtdPag);
                     request.setAttribute("curPag", pag);
                     request.setAttribute("nome", nome);
@@ -58,10 +55,8 @@ public class ListagemImagemController extends HttpServlet {
                     String nomeImagem = service.excluirImagem(Integer.parseInt(request.getParameter("idDelete")));
                     request.setAttribute("operacao", "Imagem " + nomeImagem + " deletado com sucesso.");
                 }
-                System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("listagemImagens.jsp");
                 dispatcher.forward(request, response);
-                System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnn");
             }catch(Exception ex){
                 request.setAttribute("erro", ex);
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);

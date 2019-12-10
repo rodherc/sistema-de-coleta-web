@@ -1,12 +1,12 @@
-INSERT INTO Participante
+/*INSERT INTO Participante
 VALUES (1, 'rodpinto.com','999999999', 22  ,'M', '37278000', 'amarelo','um cada muito legal');
 INSERT INTO Participante
 VALUES (2, 'willcoelho.com','888888888', 22  ,'M', '37200000', 'pretinho','chato pakas');
-
+*/
 
 INSERT INTO Pesquisador
-VALUES (11, 'pesquisado11@gmail','81dc9bdb52d04dc20036dbd8313ed055',0,'will',null);
-INSERT INTO Pesquisador
+VALUES (11, 'pesquisador@gmail.com','81dc9bdb52d04dc20036dbd8313ed055',0,'will',null);
+/*INSERT INTO Pesquisador
 VALUES (22, 'pesquisado22@gmail','81dc9bdb52d04dc20036dbd8313ed055',1,'rodrigo',null);
 
 INSERT INTO Teste
@@ -18,6 +18,7 @@ INSERT INTO Resposta
 VALUES (1, 1, 'A,B,C,D');
 INSERT INTO Resposta
 VALUES (2, 1, 'D,D,D,D');
+*/
 
 INSERT INTO Imagem
 VALUES(1,'ufla','imagens/ufla.jpeg');
@@ -26,7 +27,8 @@ VALUES(2,'ufla2','imagens/ufla2.jpeg');
 INSERT INTO Imagem
 VALUES(3,'ufla3','imagens/ufla3.jpeg');
 
-INSERT INTO Pergunta
+ /*INSERT INTO Pergunta
 VALUES (1,0,'qual a cor dos cabelos castanhos de maria?', 1, true);
 INSERT INTO Pergunta
 VALUES (2,1,'o peito do pe do pedro e preto?', 1, false);
+*/

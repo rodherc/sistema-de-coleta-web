@@ -37,18 +37,14 @@ public class CadastroPerguntaController extends HttpServlet {
             if (permissoes != null && permissoes.hasComponente(Componente.USUARIO)) {
 
                 pergunta = new Pergunta();
-                System.out.println("-----------Criar pergunta-------------");
                 pergunta.setDescricaoPergunta(request.getParameter("descricaoPergunta"));
                 pergunta.setCodTeste((int)request.getSession().getAttribute("codTeste"));
                 pergunta.setExisteDescricao(Boolean.parseBoolean(request.getParameter("existeDescricao")));
                 pergunta.setTipo(Tipo.getTipo(Integer.parseInt(request.getParameter("tipo"))));
                 PerguntaService service = new PerguntaService();
                 try{
-                    System.out.println("----------Gravar Pergunta-----------");
                     service.gravarPergunta(pergunta);
-                    System.out.println("----------Gravou Pergunta-----------");
                 }catch(Exception ex){
-                    System.out.println("----------Erro-----------");
                     request.setAttribute("erro", ex);
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("erro.jsp");

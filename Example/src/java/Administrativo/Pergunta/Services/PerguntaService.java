@@ -113,32 +113,18 @@ public class PerguntaService {
         try {
             
             if (pergunta.getCodPergunta() != 0) {
-                System.out.println("----------Atualizar Pergunta-----------");
-                //ps = con.prepareStatement("Update Pergunta set tipo = ?, descricaoPergunta = ?, existeDescricao = ? where codPergunta = ?");
                 ps = con.prepareStatement("Update Pergunta set descricaoPergunta = ? where codPergunta = ?");
-                //ps.setInt(1, teste.getId());
-                //ps.setString(1, pergunta.getTipo().toString());
                 ps.setString(1, pergunta.getDescricaoPergunta());
                 ps.setString(2,"%" +pergunta.getCodPergunta() + "%");
-               // ps.setInt(3, teste.getTipo().getValue());
-                //ps.setBoolean(3, pergunta.getExisteDescricao());
                 ps.executeUpdate();
             } else {
-                System.out.println("----------Criar nova Pergunta-----------");
-                //ps = con.prepareStatement("Insert into Pergunta (tipo,descricaoPergunta,codTeste,existeDescricao) values (?,?,?,?)");
-                 ps = con.prepareStatement("Insert into Pergunta (descricaoPergunta,codTeste,existeDescricao,tipo) values (?,?,?,?)");
-                //ps.setString(1, pergunta.getTipo().toString());
+                ps = con.prepareStatement("Insert into Pergunta (descricaoPergunta,codTeste,existeDescricao,tipo) values (?,?,?,?)");
+                
                 ps.setString(1, pergunta.getDescricaoPergunta());
                 ps.setInt(2,pergunta.getCodTeste());
                 ps.setBoolean(3,pergunta.getExisteDescricao());
                 ps.setInt(4, pergunta.getTipo().getValue());
-                //ps.setInt(3,pergunta.getCodTeste());
-                //ps.setBoolean(4, pergunta.getExisteDescricao());
-                
-              //  senha = ServiceFactory.getLoginService().gerarSenha();
-              //  String md5 = ServiceFactory.getLoginService().gerarMD5(senha);
-
-              //  ps.setString(4, md5);
+              
                 ps.execute();
             }
 
@@ -157,7 +143,7 @@ public class PerguntaService {
     
     public Integer excluirPergunta(Integer codPergunta) throws Exception {
 
-        //String nome = null;
+ 
 
         Connection con = DataSource.getInstance().getConnection();
 
@@ -167,17 +153,7 @@ public class PerguntaService {
 
         try {
 
-            /*ps1 = con.prepareStatement("Select nome from Teste where codTeste = ?");
-
-            ps1.setInt(1, id);
-
-            rs = ps1.executeQuery();
-
-            if (rs.next()) {
-                nome = rs.getString("nome");
-            } else {
-                throw new Exception("O código de Teste " + id + " é inválido");
-            }*/
+            
             ps = con.prepareStatement("Delete from Pergunta where codPergunta = ?");
             ps.setInt(1, codPergunta);
             ps.executeUpdate();
@@ -197,7 +173,7 @@ public class PerguntaService {
 
             con.close();
         }
-        // ver o que ele faz com retornooo
+        
         //return nome;
         return codPergunta;
     }
